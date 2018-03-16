@@ -4,6 +4,7 @@ class Player {
     this.playState = 'stopped';
     this.volume = 80;
     this.soundObject = new buzz.sound(this.currentlyPlaying.soundFileUrl);
+    this.timeInSeconds = "M:SS"
   }
 
   getDuration() {
@@ -14,6 +15,11 @@ class Player {
     return this.soundObject.getTime();
   }
   
+  prettyTime(timeInSeconds) {
+    return Math.floor( this.soundObject.getDuration() / 60 );
+  }
+
+
   playPause (song = this.currentlyPlaying) {
     if (this.currentlyPlaying !== song) {
       // Stop the currently playing sound file (even if nothing is playing)
